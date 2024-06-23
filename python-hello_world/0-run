@@ -1,0 +1,3 @@
+#!/bin/bash
+$PYFILE = Python_file_name
+pyhton3 $PYFIL
