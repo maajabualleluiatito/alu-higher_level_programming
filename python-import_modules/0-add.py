@@ -4,3 +4,4 @@ from add_0.py import def add(a, b):
     b = 2
     c = a + b
 print("a",a + "b",b = c)
+"__main__" "__name__"
