@@ -1,35 +1,51 @@
-import unittest
-from models.base_geometry import BaseGeometry
+>>> BaseGeo = __import__('7-base_geometry').BaseGeometry
 
-class TestBaseGeometry(unittest.TestCase):
-    def setUp(self):
-        self.bg = BaseGeometry()
+>>> base = BaseGeo()
 
-    def test_area(self):
-        with self.assertRaises(Exception) as context:
-            self.bg.area()
-        self.assertEqual(str(context.exception), "area() is not implemented")
+>>> base.area()
+Traceback (most recent call last):
+Exception: area() is not implemented
 
-    def test_integer_validator_valid(self):
-        # Test valid integer input
-        try:
-            self.bg.integer_validator("test", 5)
-        except (TypeError, ValueError):
-            self.fail("integer_validator raised unexpected exception for valid input")
+>>> base.integer_validator()
+Traceback (most recent call last):
+TypeError: integer_validator() missing 2 required positional arguments: 'name' and 'value'
 
-    def test_integer_validator_type_error(self):
-        # Test type error for non-integer input
-        with self.assertRaises(TypeError) as context:
-            self.bg.integer_validator("test", "string")
-        self.assertEqual(str(context.exception), "test must be an integer")
+>>> base.integer_validator("age")
+Traceback (most recent call last):
+TypeError: integer_validator() missing 1 required positional argument: 'value'
 
-    def test_integer_validator_value_error(self):
-        # Test value error for non-positive integer input
-        with self.assertRaises(ValueError) as context:
-            self.bg.integer_validator("test", 0)
-        self.assertEqual(str(context.exception), "test must be greater than 0")
+>>> base.integer_validator("age", (4,))
+Traceback (most recent call last):
+TypeError: age must be an integer
 
-if __name__ == "__main__":
-    unittest.main()
+>>> base.integer_validator("my_int", 12)
 
+>>> base.integer_validator("width", 89)
 
+>>> base.integer_validator("name", "John")
+Traceback (most recent call last):
+TypeError: name must be an integer
+
+>>> base.integer_validator("age", 0)
+Traceback (most recent call last):
+ValueError: age must be greater than 0
+
+>>> base.integer_validator("distance", -4)
+Traceback (most recent call last):
+ValueError: distance must be greater than 0
+
+>>> base.integer_validator("age", [3])
+Traceback (most recent call last):
+TypeError: age must be an integer
+
+>>> base.integer_validator("age", True)
+Traceback (most recent call last):
+TypeError: age must be an integer
+
+>>> base.integer_validator("age", {3, 4})
+Traceback (most recent call last):
+TypeError: age must be an integer
+
+>>> base.integer_validator("age", None)
+Traceback (most recent call last):
+TypeError: age must be an integer
