@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/python                                    3
 class MyList(list):
     def print_sorted(self):
         # Sort the list and print it
@@ -15,10 +15,13 @@ my_list.append(1)
 my_list.append(5)
 my_list.append(9)
 
-# Print the original list
-print("Original list:")
-print(my_list)
-
 # Print the sorted list using the print_sorted method
-print("Sorted list:")
 my_list.print_sorted()
+
+# Testing another scenario
+another_list = MyList([3, 1, 4, 2])
+print("Expected output:")
+print(another_list)
+
+print("Sorted list:")
+another_list.print_sorted()
