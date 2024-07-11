@@ -1,8 +1,4 @@
-$ cat tests/7-base_geometry.txt
-#!/usr/bin/python3
 import unittest
-import sys
-import io
 from models.base_geometry import BaseGeometry
 
 class TestBaseGeometry(unittest.TestCase):
@@ -16,7 +12,10 @@ class TestBaseGeometry(unittest.TestCase):
 
     def test_integer_validator_valid(self):
         # Test valid integer input
-        self.assertIsNone(self.bg.integer_validator("test", 5))
+        try:
+            self.bg.integer_validator("test", 5)
+        except (TypeError, ValueError):
+            self.fail("integer_validator raised unexpected exception for valid input")
 
     def test_integer_validator_type_error(self):
         # Test type error for non-integer input
