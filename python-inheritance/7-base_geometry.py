@@ -1,5 +1,19 @@
 #!/usr/bin/python3
+
+"""
+Module 7-base_geometry
+
+Contains BaseGeometry
+with public instance method area and integer_validation
+"""
+
+
 class BaseGeometry:
+    """
+    Methods:
+        area(self)
+        integer_validator(self, name, value)
+    """
     def area(self):
         raise Exception("area() is not implemented")
 
